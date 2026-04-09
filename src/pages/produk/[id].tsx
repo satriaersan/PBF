@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import DetailProduk from "../views/produk/DetailProduk";
+import DetailProduk from "../../views/produk/DetailProduk";
 
 const HalamanProduk = () => {
   const { query } = useRouter();
