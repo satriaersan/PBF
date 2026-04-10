@@ -1,15 +1,23 @@
-import React from 'react';
+import { ProductType } from "../../types/product.type";
 
-interface DetailProdukProps {
-  id: string;
-}
-
-const DetailProduk: React.FC<DetailProdukProps> = ({ id }) => {
+const DetailProduk = ({ products }: { products: ProductType }) => {
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-4">Detail Produk</h1>
-      <p className="text-lg">Produk ID: <span className="font-semibold">{id}</span></p>
-    </div>
+    <>
+      <h1>Detail Produk</h1>
+      <div>
+        <div>
+          <img src={products?.image} alt={products?.name} />
+        </div>
+
+        <div>
+          <h1>{products?.name}</h1>
+          <p>{products?.kategori}</p>
+          <p>
+            Rp {products?.price && products.price.toLocaleString("id-ID")}
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 

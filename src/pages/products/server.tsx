@@ -6,7 +6,7 @@ const ProductsServer = (props: { products: ProductType[] }) => {
   return (
     <div>
       <h1>Products Server Page</h1>
-      <TampilanProduk products={products} isLoading={false} />
+      <TampilanProduk products={products} />
     </div>
   );
 };

@@ -1,22 +1,24 @@
-import useSWR from "swr";
 import TampilanProduk from "../../views/produk";
-import fetcher from "../../utils/swr/fetcher";
+import { ProductType } from "../../types/product.type";
 
-const kategori = () => {
-  const { data, error } = useSWR("/api/produk", fetcher);
-  const isLoading = !data && !error;
-
-  if (error) {
-    return <div>Gagal memuat produk.</div>;
-  }
-
+const HalamanProduk = (props: { products: ProductType[] }) => {
+  const { products } = props;
   return (
     <div>
-      <TampilanProduk
-        products={data?.data || []}
-        isLoading={isLoading}
-      />
+      <TampilanProduk products={products ?? []} />
     </div>
   );
 };
-export default kategori;
+
+export default HalamanProduk;
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3000/api/produk");
+  const response = await res.json();
+
+  return {
+    props: {
+      products: response.data ?? [],
+    },
+  };
+}

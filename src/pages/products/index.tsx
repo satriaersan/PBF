@@ -14,7 +14,6 @@ const Products = () => {
     <div>
       <TampilanProduk
         products={data?.data || []}
-        isLoading={isLoading}
       />
     </div>
   );
